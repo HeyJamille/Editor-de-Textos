@@ -12,3 +12,4 @@
 /home/jamille/Área de Trabalho/Projetos/editor_texto/obj/Debug/net8.0/editor_texto.pdb
 /home/jamille/Área de Trabalho/Projetos/editor_texto/obj/Debug/net8.0/editor_texto.genruntimeconfig.cache
 /home/jamille/Área de Trabalho/Projetos/editor_texto/obj/Debug/net8.0/ref/editor_texto.dll
+/home/jamille/Área de Trabalho/Projetos/editor_texto/obj/Debug/net8.0/editor_texto.sourcelink.json

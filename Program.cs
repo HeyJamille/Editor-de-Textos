@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
-using System.IO;
+using System.IO; // Para usar o using para abrir e editar arquivo
 
 namespace Editor_texto
 {
@@ -29,10 +29,10 @@ namespace Editor_texto
           System.Environment.Exit(0);
           break;
         case 1:
-          Abrir_Arquivo();
+          Abrir();
           break;
         case 2:
-          Editar_Arquivo();
+          Editar();
           break;
         default:
           Menu();
@@ -40,29 +40,39 @@ namespace Editor_texto
       }
     }
 
-    // Método Abrir_Arquivo
-    static void Abrir_Arquivo()
+    // Método Abrir
+    static void Abrir()
     {
       Console.Clear();
 
       Console.WriteLine("Qual caminho do arquivo?");
       string path = Console.ReadLine();
+      Console.WriteLine("-------------------------------------- \n");
 
-      using (var file = new StreamReader(path)) ;
+      if (File.Exists(path))
       {
-        string texto = file.ReadToEnd();
-        Console.WriteLine(texto);
+        using (var file = new StreamReader(path))
+        {
+          string texto = file.ReadToEnd();
+          Console.WriteLine(texto);
+        }
+
+        Console.WriteLine("");
+        Console.ReadLine();
+        Menu();
       }
+      else
+      {
+        Console.WriteLine("O arquivo digitado não existe. Por favor, escreva um arquivo existente. \n");
 
-      Console.WriteLine("");
-      Console.ReadLine();
-
-      Menu();
+        Thread.Sleep(3000); // Dorme por 4 segundo
+        Abrir();
+      }
 
     }
 
-    // Método Editar_Arquivo
-    static void Editar_Arquivo()
+    // Método Editar
+    static void Editar()
     {
       Console.Clear();
 
@@ -82,7 +92,7 @@ namespace Editor_texto
       Salvar(texto);
     }
 
-    // Método Editar_Arquivo
+    // Método Salvar
     static void Salvar(string texto)
     {
       Console.Clear();
@@ -91,7 +101,7 @@ namespace Editor_texto
       var path = Console.ReadLine();
 
       // Cria o arquivo
-      using (var file = new StreamWriter(path))
+      using (var file = new StreamWriter(path)!)
       {
         file.Write(texto); // Escreve e armazena na variavel texto
       }
